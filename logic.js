@@ -44,8 +44,8 @@ database.ref().on("value", function(snapshot) {
     $("#highest-price").text(highPrice)
 
     // Print the data to the console.
-    console.log(highPrice)
-    console.log(highBidder)
+    console.log("the highest price is " + highPrice)
+    console.log("the highest bidder is " + highBidder)
 
   }
 
@@ -78,7 +78,7 @@ $("#submit-bid").on("click", function(event) {
   var bidderPrice =  parseInt($("#bidder-price").val()) 
   var bidderName = $("#bidder-name").val()
   
-  console.log(highPrice)
+  
   // Log the Bidder and Price (Even if not the highest)
   if (bidderPrice > highPrice) {
     
@@ -98,7 +98,7 @@ $("#submit-bid").on("click", function(event) {
       highBidder = bidderName;
 
       
-      console.log(highPrice)
+      console.log("the high price is " + highPrice)
     
     // Store the new high price and bidder name as a local variable
     
@@ -112,7 +112,7 @@ $("#submit-bid").on("click", function(event) {
   else {
     // Alert
     alert("Sorry that bid is too low. Try again.");
-    console.log(highPrice)
+    console.log("the high price is " + highPrice)
     
   }
 
