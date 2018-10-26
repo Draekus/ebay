@@ -94,8 +94,11 @@ $("#submit-bid").on("click", function(event) {
     });
 
     // Log the new High Price
-    highPrice = bidderPrice;
-    highBidder = bidderName;
+    database.ref().on("value", function(snapshot) {
+      highBidder = snapshot.val().highBidder
+
+      highPrice = snapshot.val().highPrice
+    });
     // Store the new high price and bidder name as a local variable
     
 
