@@ -77,17 +77,19 @@ $("#submit-bid").on("click", function(event) {
   // Get the input values
   var bidderPrice = $("#bidder-price").val() 
   var bidderName = $("#bidder-name").val()
-
+  console.log(bidderPrice)
+  console.log(bidderName)
+  console.log(highPrice)
   // Log the Bidder and Price (Even if not the highest)
   if (bidderPrice > highPrice) {
-
+    
     // Alert
     alert("You are now the highest bidder.");
 
     // Save the new price in Firebase
     database.ref().set({
-      highBidder : bidderPrice,
-      highPrice: bidderName
+      highBidder : bidderName,
+      highPrice: bidderPrice
 
     });
 
@@ -106,6 +108,7 @@ $("#submit-bid").on("click", function(event) {
   else {
     // Alert
     alert("Sorry that bid is too low. Try again.");
+    
   }
 
 });
