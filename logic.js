@@ -75,10 +75,9 @@ $("#submit-bid").on("click", function(event) {
   event.preventDefault();
 
   // Get the input values
-  var bidderPrice = $("#bidder-price").val() 
+  var bidderPrice =  parseInt($("#bidder-price").val()) 
   var bidderName = $("#bidder-name").val()
-  console.log(bidderPrice)
-  console.log(bidderName)
+  
   console.log(highPrice)
   // Log the Bidder and Price (Even if not the highest)
   if (bidderPrice > highPrice) {
@@ -94,11 +93,13 @@ $("#submit-bid").on("click", function(event) {
     });
 
     // Log the new High Price
-    database.ref().on("value", function(snapshot) {
-      highBidder = snapshot.val().highBidder
+    
+      highPrice = bidderPrice;
+      highBidder = bidderName;
 
-      highPrice = snapshot.val().highPrice
-    });
+      
+      console.log(highPrice)
+    
     // Store the new high price and bidder name as a local variable
     
 
@@ -111,6 +112,7 @@ $("#submit-bid").on("click", function(event) {
   else {
     // Alert
     alert("Sorry that bid is too low. Try again.");
+    console.log(highPrice)
     
   }
 
