@@ -75,8 +75,8 @@ $("#submit-bid").on("click", function(event) {
   event.preventDefault();
 
   // Get the input values
-  var userPrice = $("#bidder-price").val() 
-  var userName = $("#bidder-name").val()
+  var bidderPrice = $("#bidder-price").val() 
+  var bidderName = $("#bidder-name").val()
 
   // Log the Bidder and Price (Even if not the highest)
   if (bidderPrice > highPrice) {
@@ -86,19 +86,21 @@ $("#submit-bid").on("click", function(event) {
 
     // Save the new price in Firebase
     database.ref().set({
-      highBidder : userPrice,
-      highPrice: userName
+      highBidder : bidderPrice,
+      highPrice: bidderName
 
     });
 
     // Log the new High Price
-    highPrice = userPrice;
-    highBidder = userName;
+    highPrice = bidderPrice;
+    highBidder = bidderName;
     // Store the new high price and bidder name as a local variable
-
+    
 
     // Change the HTML to reflect the new high price and bidder
-
+    $("#highest-bidder").text(highBidder)
+    $("#highest-price").text(highPrice)
+    
   }
 
   else {
